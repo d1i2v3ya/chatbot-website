@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brain stroke prediction</title>
+<!--<link href="styles.css" rel="stylesheet">-->
+
+
+</head>
+
+<body>
+  <div class="form">
+<form action="{{url_for('predict')}}" method="post">
+<input type='text' placeholder='Enter the Gender ' name='Gender'><br>
+<input type='number' placeholder='Enter the Age ' name='Age'><br>
+<input type='number' placeholder='Enter the Hypertension ' name='Hypertension'><br>
+<input type='number' placeholder='Enter the Heartdisease ' name='heartdisease'><br>
+<input type='text' placeholder='Evermarried? ' name='maritalstatus'><br>
+<input type='text' placeholder='Worktype ' name='work'><br>
+<input type='text' placeholder='Residence type ' name='residence'><br>
+<input type='number' placeholder='avg glucose level ' name='glucose'><br>
+<input type='number'placeholder='BMI 'name='bmi'><br>
+<input type='text'placeholder='smoking status'name='ss'><br>
+<button type='submit'>SUBMIT</button>
+</form>
+<br>
+<br>
+<h4>{{ prediction_text }}</h4>
+</div>
+</body>
+</html>
+
+
