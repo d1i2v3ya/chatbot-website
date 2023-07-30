@@ -3,10 +3,7 @@ from flask import Flask, request, render_template
 import pickle
 app=Flask(__name__,template_folder='templates')
 model=pickle.load(open('C:/Users/M9bin/OneDrive/Documents/brainstroke/models/model.pkl','rb'))
-'''
-with open('C:/Users/M9bin/OneDrive/Documents/brainstroke/models/model.pkl', 'rb') as file:
-    model = pickle.load(file)
-'''
+
 @app.route('/')
 def home():
     return render_template('brain.html')
@@ -28,6 +25,3 @@ def predict():
     output = round(prediction[0][0], 3)  # Assuming the model output is a 2D array
 
     return render_template('brain.html', prediction_text='The prediction value is {}'.format(output))
-if __name__=="__main__":    
-    app.run()
-            
