@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <title>Stroke Prediction</title>
+</head>
+
+<body>
+    <div class="alert alert-success alert-dismissible fade show text-center mb-0" role="alert">
+        <strong>Welcome to Stroke Prediction machine</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-warning" href="#">Stroke Prediction</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Analysis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Contact us</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='IMG/image1.jpg') }}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Stroke prediction</h5>
+                    <p>In this project, our top priority is to predict whether a patient has a stroke or not.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='IMG/image2.jpg') }}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Stroke prediction</h5>
+                    <p>"The secret of your success is found in your daily routine."</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='IMG/image3.jpg') }}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Stroke prediction</h5>
+                    <p>"Symptoms of stroke include trouble walking, speaking, and understanding, as well as paralysis
+                        or numbness of the face, arm, or leg."</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h2 class="fw-normal">Fill this form to predict stroke.</h2>
+            <p class="text-muted"><b>"A stroke is your brain’s equivalent of a heart attack, happening when there’s an
+                    issue with blood flow to part of your brain. This can happen when blood vessels are blocked or
+                    because of bleeding in your brain. Strokes are a life-threatening emergency, and immediate medical
+                    attention is critical to prevent permanent damage or death.
+                    Brain cells begin to die in minutes."</b>
+            </p>
+        </div>
+        <div class="container">
+            <form action="/" method="POST">
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Gender</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="Male">
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="Female">
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="other" value="Other">
+                            <label class="form-check-label" for="other">Other</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="age" class="col-sm-2 col-form-label">Enter age</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="age" name="age" placeholder="Age">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Hypertension</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="hypertension" id="hypertension"
+                                value="1">
+                            <label class="form-check-label" for="hypertension">Yes</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Heart Disease</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="disease" id="disease" value="1">
+                            <label class="form-check-label" for="disease">Yes</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Marital status</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="marital_status" id="married" value="Yes">
+                            <label class="form-check-label" for="married">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="marital_status" id="unmarried"
+                                value="No">
+                            <label class="form-check-label" for="unmarried">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="work" class="col-sm-2 col-form-label">Work Type</label>
+                    <div class="col-sm-10">
+                        <select class="form-select" id="work" name="work" aria-label="Default select example">
+                            <option selected>-- select work type --</option>
+                            <option value="Self-employed">Self-employed</option>
+                            <option value="Private">Private</option>
+                            <option value="children">Children</option>
+                            <option value="Govt_job">Government Job</option>
+                            <option value="Never_worked">Never worked</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="residence" class="col-sm-2 col-form-label">Residence Type</label>
+                    <div class="col-sm-10">
+                        <select class="form-select" id="residence" name="residence" aria-label="Default select example">
+                            <option selected>-- Select residence type --</option>
+                            <option value="Urban">Urban</option>
+                            <option value="Rural">Rural</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="glucose" class="col-sm-2 col-form-label">Enter average glucose level</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="glucose" name="glucose"
+                            placeholder="Average Glucose level">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="bmi" class="col-sm-2 col-form-label">Enter Body Mass Index (BMI)</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="bmi" name="bmi"
+                            placeholder="Body Mass Index (BMI)">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Smoking status</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="smoking" id="unknown" value="Unknown">
+                            <label class="form-check-label" for="unknown">Unknown</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="smoking" id="never_smoked"
+                                value="never smoked">
+                            <label class="form-check-label" for="never_smoked">Never smoked</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="smoking" id="formerly_smoked"
+                                value="formerly smoked">
+                            <label class="form-check-label" for="formerly_smoked">Formerly smoked</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="smoking" id="smokes" value="smokes">
+                            <label class="form-check-label" for="smokes">Smokes</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
+            </form>
+
+            <div class="row mt-4">
+                <div class="col-md-6 offset-md-3">
+                    {% if prediction_text %}
+                    <div class="alert {{ 'alert-success' if 'High chances of stroke' in prediction_text else 'alert-info' }}"
+                        role="alert">
+                        <h3 class="text-center">{{ prediction_text }}</h3>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br>
+    </div>
+    <!-- !Symptoms Start -->
+    <section id="Precautions">
+        <div class="container">
+            <h1 class="text-center">Symptoms</h1>
+
+            <body>
+                </h5>
+                <h5 align="center-justify">
+                    The signs and symptoms of a brain stroke may be subtle or severe, depending upon the severity of the
+                    stroke. Before you help the person suffering from a stroke, it is important for
+                    you to know the symptoms of a stroke to look out for.
+                </h5>
+                <h5 align="left">Signs and symptoms of stroke include:
+                    <p>
+                        <li>Trouble speaking and understanding what others are saying. You may experience confusion,
+                            slur words or have difficulty understanding speech.</li>
+                    </p>
+                    <p>
+                        <li>Problems seeing in one or both eyes. You may suddenly have blurred or blackened vision in
+                            one or both eyes, or you may see double.</li>
+                    </p>
+                    <p>
+                        <li>Headache. A sudden, severe headache, which may be accompanied by vomiting, dizziness or
+                            altered consciousness, may indicate that you're having a stroke.</li>
+                    </p>
+                    <p>
+                        <li>Trouble walking. You may stumble or lose your balance. You may also have sudden dizziness or
+                            a loss of coordination.</li>
+                    </p>
+                </h5>
+                <h5 align="left">
+                    Other mild stroke symptoms include the following:
+                    <p>
+                        <li>Lightheadedness or dizziness</li>
+                    </p>
+                    <p>
+                        <li>Loss of balance</li>
+                    </p>
+                    <p>
+                        <li>Blurred vision, loss of vision or dim vision, especially in one eye</li>
+                    </p>
+                    <p>
+                        <li>Weakness, tingling or numbness on one side of the body</li>
+                    </p>
+                    <p>
+                        <li>Persistent Headache</li>
+                    </p>
+            </body>
+            <!-- !Symptons End -->
+            <!-- !Precautions start -->
+            <section id="Precautions">
+                <div class="container">
+                    <h1 class="text-center">Precautions</h1>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <img src="/IMG/card1.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Precautions you should take :</h5>
+                                    <p class="card-text">
+                                    <ol>
+                                        <li>Get regular physical activity.</li>
+                                        <li>Control blood pressure.</li>
+                                        <li>Reduce High Cholesterol.</li>
+                                        <li>If you smoke, quit.</li>
+                                        <li>Eat a Healthy Diet</li>
+                                        <li>Keep your blood sugar (glucose) in the normal range.</li>
+                                        <li>Get active</li>
+                                    </ol>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-">
+                                <img src="/IMG/card3.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Healthy diet for stroke patients :</h5>
+                                    <p class="card-text">
+                                        <li>Salmon (EPA):Omega-3 unsaturated fats help normalize BDNF (Brain-derived
+                                            neurotrophic factors) levels and keep the brain’s ability to change</li>
+                                        <li>Blueberries (Flavonoids):The flavonoids in blueberries are known to help
+                                            BDNF (Brain-derived neurotrophic factors)</li>
+                                        <li>Pomegranate (Antioxidants):pomegranates are high in cell reinforcements that
+                                            help protect you from the damage.</li>
+                                        <li>Like Nuts and Seeds can take (Vitamin E):Nuts and seeds are a good source of
+                                            vitamin E, which fights cancer and helps us think better as we get older.
+                                        </li>
+                                        <li>Take Beans (Magnesium):Magnesium protects the brain in a variety of ways
+                                            when they have a stroke.</li>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- !Precautions End -->
+                    <!-- !Contact Start -->
+                    <section id="Contact">
+                        <div class="container mt-3 contactContent">
+                            <h1 class="text-center">Contact us</h1>
+
+                            <div class="row mt-4">
+                                <div class="col-lg-6">
+                                    <!-- to edit google map goto https://www.embed-map.com type your location, generate html code and copy the html  -->
+                                    <div style="max-width:100%;overflow:hidden;color:red;width:500px;height:500px;">
+                                        <div id="embedmap-canvas" style="height:100%; width:100%;max-width:100%;">
+                                            <iframe style="height:100%;width:100%;border:0;" frameborder="0"
+                                                src="https://www.google.com/maps/embed/v1/place?q=Apollo+hospital+jasol,+Jasola+Vihar,+New+Delhi,+Delhi,+India&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8">
+                                            </iframe>
+                                        </div>
+                                        <a class="googlemaps-html" href="https://www.embed-map.com"
+                                            id="get-data-forembedmap">https://www.embed-map.com</a>
+                                        <style>
+                                            #embedmap-canvas img {
+                                                max-width: none !important;
+                                                background: none !important;
+                                                font-size: inherit;
+                                                font-weight: inherit;
+                                            }
+                                        </style>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <!-- form fields -->
+                                    <form>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Name">
+                                        <input type="email" class="form-control mt-3" placeholder="Email">
+                                        <input type="email" class="form-control mt-3" placeholder="Phone No">
+                                        <input type="text" class="form-control mt-3" placeholder="Subject">
+                                        <div class="mb-3 mt-3">
+                                            <textarea class="form-control" rows="5" id="comment" name="text"
+                                                placeholder="Details"></textarea>
+                                        </div>
+                                    </form>
+                                    <button type="button" class="btn btn-success mt-3">Contact us</button>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                    <!-- !Contact End-->
+</body>
+
+</html>
