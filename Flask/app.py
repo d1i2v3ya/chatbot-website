@@ -5,7 +5,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 app = Flask(__name__, static_url_path='/static')
 
-# Load the KNN model
+
 with open('knn_model.pkl', 'rb') as file:
     knn_model = pickle.load(file)
 
